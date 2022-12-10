@@ -102,7 +102,7 @@ exports.delete = async (req, res) => {
 
 exports.deleteAll = async (req, res) => {
 
-    const deletedWord = await WordModel.remove()
+    const deletedWord = await WordModel.deleteMany()
 
     return res.status(201).json(deletedWord);
 
