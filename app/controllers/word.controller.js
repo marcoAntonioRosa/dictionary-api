@@ -23,7 +23,7 @@ exports.findAll = async (req, res) => {
 
     try {
 
-        const words = await WordModel.find();
+        const words = await WordModel.find().select({ "word": 1, "definition": 1, "_id": 0 });;
 
         return res.status(200).send(words)
 
@@ -43,7 +43,9 @@ exports.findOne = async (req, res) => {
 
     try {
 
-        const word = await WordModel.findOne({ word: req.params.word});
+        const word = await WordModel
+        .findOne({ word: req.params.word})
+        .select({ "word": 1, "definition": 1, "_id": 0 });
 
         return res.status(200).send(word)
 
